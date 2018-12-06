@@ -69,7 +69,7 @@ if [[ -f Staticfile.auth ]]; then
 fi
 
 cp -f $compile_buildpack_dir/pandoc pandoc
-./pandoc --ascii --from=markdown --to=html index.md
+./pandoc --ascii --from=markdown --to=html $build_dir/dist/index.md > index.html
 
 # Enable directory index
 if [[ -e "Staticfile" && "$(grep 'directory:' Staticfile)X" != "X" ]]; then
