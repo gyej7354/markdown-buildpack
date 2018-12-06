@@ -68,6 +68,9 @@ if [[ -f Staticfile.auth ]]; then
   protip "Learn about basic authentication" "https://github.com/cloudfoundry/staticfile-buildpack#basic-authentication"
 fi
 
+cp -f $compile_buildpack_dir/pandoc pandoc
+./pandoc --ascii --from=markdown --to=html index.md
+
 # Enable directory index
 if [[ -e "Staticfile" && "$(grep 'directory:' Staticfile)X" != "X" ]]; then
   status "Enabling directory index for folders without index.html files"
