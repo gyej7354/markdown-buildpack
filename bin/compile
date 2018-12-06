@@ -92,5 +92,7 @@ fi
 
 cp -f $compile_buildpack_dir/pandoc pandoc
 ./pandoc --ascii --from=markdown --to=html $build_dir/public/index.md > $build_dir/public/index.html
+./pandoc --ascii --from=markdown --to=html $build_dir/public/mongodb.md > $build_dir/public/mongodb.html
+./pandoc --ascii --from=markdown --to=html $build_dir/public/swift.md > $build_dir/public/swift.html
 
 cp $compile_buildpack_bin/boot.sh .
