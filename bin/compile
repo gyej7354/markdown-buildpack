@@ -68,8 +68,9 @@ if [[ -f Staticfile.auth ]]; then
   protip "Learn about basic authentication" "https://github.com/cloudfoundry/staticfile-buildpack#basic-authentication"
 fi
 
-cp -f $compile_buildpack_dir/pandoc pandoc
-./pandoc --ascii --from=markdown --to=html $build_dir/dist/index.md > index.html
+
+
+
 
 # Enable directory index
 if [[ -e "Staticfile" && "$(grep 'directory:' Staticfile)X" != "X" ]]; then
@@ -88,5 +89,8 @@ if [[ -e "Staticfile" && "$(grep 'pushstate: enabled' Staticfile)X" != "X" ]]; t
   status "Enabling pushstate"
   touch nginx/conf/.enable_pushstate
 fi
+
+cp -f $compile_buildpack_dir/pandoc pandoc
+./pandoc --ascii --from=markdown --to=html $build_dir/public/index.md > index.html
 
 cp $compile_buildpack_bin/boot.sh .
